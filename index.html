@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uganda Stage Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <h1>Uganda Stage Map <span class="chip" id="srcChip">Sample data</span></h1>
+          <p class="sub">People transported by district and stage. Tap a district to zoom in. Zoom further for terrain and buildings.</p>
+        </div>
+        <div class="seg" role="group" aria-label="Map colouring">
+          <button type="button" data-m="total" aria-pressed="true">Transported</button>
+          <button type="button" data-m="first" aria-pressed="false">First-timers</button>
+          <button type="button" data-m="share" aria-pressed="false">First-timer share</button>
+        </div>
+      </header>
+
+      <div class="toolbar" role="group" aria-label="3D view">
+        <button type="button" class="tgl" id="tAuto" aria-pressed="true" title="Choose terrain or buildings automatically from where you are looking">Auto 3D</button>
+        <button type="button" class="tgl" id="tTerrain" aria-pressed="false">Terrain</button>
+        <button type="button" class="tgl" id="tBuildings" aria-pressed="false">Buildings</button>
+        <button type="button" class="tgl" id="tDistricts" aria-pressed="false">3D districts</button>
+        <label class="exag" for="exag">Terrain height
+          <input type="range" id="exag" min="1" max="3" step="0.1" value="1.5" />
+          <output id="exagOut" for="exag">1.5×</output>
+        </label>
+      </div>
+
+      <div class="layout">
+        <div class="mapcard" id="mapcard">
+          <div class="notice" id="notice" hidden></div>
+          <div class="mapwrap">
+          <div id="map"></div>
+          <div class="autoinfo" id="autoInfo" data-mode="country">Zoom in to see terrain and buildings</div>
+          <div class="ctrl">
+            <button type="button" id="zin" aria-label="Zoom in">+</button>
+            <button type="button" id="zout" aria-label="Zoom out">−</button>
+            <button type="button" id="tilt" class="txt" aria-label="Tilt the map">Tilt</button>
+            <button type="button" id="zreset" class="txt">All</button>
+          </div>
+          <div class="legend" id="legend">
+            <div class="lg-title" id="lgTitle"></div>
+            <div class="lg-bar"></div>
+            <div class="lg-scale"><span id="lgMin"></span><span id="lgMid"></span><span id="lgMax"></span></div>
+          </div>
+          </div>
+        </div>
+
+        <aside class="panel" id="panel" aria-live="polite"></aside>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
