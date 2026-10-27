@@ -25,5 +25,5 @@ dist-preview
 .env
 .env.local
 .env.*.local
-env.demo
+.env.demo
 
